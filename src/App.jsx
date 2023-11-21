@@ -1,18 +1,47 @@
-import axios from "axios";
-import React, { useState } from "react";
 import "./App.css";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import Nav from "./components/nav/Nav.jsx";
 import Cards from "./components/cards/Cards.jsx";
-import { Routes, Route } from "react-router-dom";
 import About from "./components/about/About.jsx";
 import Detail from "./components/deatil/Detail.jsx";
 import Error from "./components/error/Error.jsx";
+import Form from "./components/form/Form.jsx";
+
 
 const URL = "https://rym2.up.railway.app/api/character";
 const API_KEY = "henrystaff";
+const EMAIL = "jealmuco@gmail.com"
+const PASSWORD = "Juanes.6"
+
+
 
 function App() {
   const [characters, setCharacters] = useState([]);
+  const navigate = useNavigate();
+  const [access, setAccess] = useState(false);
+
+  const location = useLocation();
+  // console.log(location.pathname);
+
+  function login(userData){
+    if(userData.password === PASSWORD && userData.email === EMAIL){
+      setAccess(true);
+      navigate("/home")
+    }else{
+      alert("Credenciales incorrectas")
+    }
+  }
+
+  function logout(){
+    setAccess(false);
+  }
+
+  useEffect(() => {
+    // !access && navigate('/home');
+    !access && navigate('/');
+ }, [access]);
 
   function onSearch(id) {
     const characterId = characters.filter((char) => char.id === Number(id));
@@ -52,14 +81,19 @@ function App() {
 
 // ----------------------FIN DEL CODIGO EXTRA RANDOM--------------------------------------- 
 
+
+
   return (
     <div className="App">
-        <Nav onSearch={onSearch} onRandom={onRandom} />
+        {location.pathname !== "/" ? <Nav onSearch={onSearch} onRandom={onRandom} logout={logout} /> : null}
+        
       <Routes>
+        
         <Route path="/home" element={<Cards onClose={onClose} characters={characters} />} />
         <Route path="/about" element={<About />} />
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="*" element={<Error />} />
+        <Route path="/" element={<Form login={login} />} />
       </Routes>
     </div>
   );
