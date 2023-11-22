@@ -31,9 +31,9 @@ export default function validation(input) {
     return errors;
 }
 
-console.log(
-    validation({
-        email: "a@a.co",
-        password: "a114fg9w2t1",
-    })
-);
+// console.log(
+//     validation({
+//         email: "a@a.co",
+//         password: "a114fg9w2t1",
+//     })
+// );

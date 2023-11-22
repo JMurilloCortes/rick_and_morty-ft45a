@@ -6,8 +6,11 @@ import Nav from "./components/nav/Nav.jsx";
 import Cards from "./components/cards/Cards.jsx";
 import About from "./components/about/About.jsx";
 import Detail from "./components/deatil/Detail.jsx";
+import Favorites from "./components/favorites/Favorites.jsx";
 import Error from "./components/error/Error.jsx";
 import Form from "./components/form/Form.jsx";
+import { useDispatch } from "react-redux";
+import { removeFav } from "./redux/actions.js";
 
 
 const URL = "https://rym2.up.railway.app/api/character";
@@ -20,10 +23,11 @@ const PASSWORD = "Juanes.6"
 function App() {
   const [characters, setCharacters] = useState([]);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [access, setAccess] = useState(false);
 
   const location = useLocation();
-  // console.log(location.pathname);
+ 
 
   function login(userData){
     if(userData.password === PASSWORD && userData.email === EMAIL){
@@ -39,8 +43,8 @@ function App() {
   }
 
   useEffect(() => {
-    // !access && navigate('/home');
-    !access && navigate('/');
+    !access && navigate('/home');
+    // !access && navigate('/');
  }, [access]);
 
   function onSearch(id) {
@@ -59,8 +63,11 @@ function App() {
       }
     });
   }
+
+
   function onClose(id) {
     setCharacters(characters.filter((char) => char.id !== Number(id)));
+    dispatch(removeFav(id));
   }
 
 // ----------------------CODIGO EXTRA RANDON--------------------------------------- 
@@ -94,6 +101,8 @@ function App() {
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="*" element={<Error />} />
         <Route path="/" element={<Form login={login} />} />
+        <Route path="/favorites" element={<Favorites onClose={onClose} />} />
+
       </Routes>
     </div>
   );

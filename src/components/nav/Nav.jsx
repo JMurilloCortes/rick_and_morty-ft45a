@@ -12,6 +12,9 @@ function Nav({onSearch, onRandom, logout}) { {/*------> AQUI IMPORTE LA FUNCION 
       <button>
         <NavLink to="/home">Home</NavLink>
       </button>
+      <button>
+        <NavLink to="/favorites">Favorites</NavLink>
+      </button>
       <button onClick={logout}>Logout❌</button>
     </div>
   );

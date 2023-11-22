@@ -3,7 +3,10 @@ import Card from "../card/Card";
 export default function Cards({ characters, onClose }) {
   return (
     <div>
-      {characters.map((character, index) => (
+
+      {
+      !characters.length ? <h2> Ingrese un id...</h2> :
+      characters.map((character, index) => (
         <Card
           key={index}
           id={character.id}
