@@ -1,8 +1,9 @@
+import styles from "./cards.module.css"
 import Card from "../card/Card";
 
 export default function Cards({ characters, onClose }) {
   return (
-    <div>
+    <div className={styles.container}>
 
       {
       !characters.length ? <h2> Ingrese un id...</h2> :

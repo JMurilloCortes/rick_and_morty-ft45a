@@ -1,5 +1,5 @@
+import styles from "./favorites.module.css"
 import React from "react";
-
 import Card from "../card/Card";
 import { useDispatch, useSelector } from "react-redux";
 import { orderCards, filterCards } from "../../redux/actions";
@@ -20,13 +20,8 @@ dispatch(filterCards(event.target.value))
 
   return (
     <div>
-      <div>
+      <div className={styles.container}>
 
-        <select name="order" onChange={handleOrder}>
-          <option value="A">Ascendente</option>
-          <option value="D">Descendente</option>
-        </select>
-        
         <select name="filter" onChange={handleFilter}>
           <option value="All">All</option>
           <option value="Male">Male</option>
@@ -34,9 +29,15 @@ dispatch(filterCards(event.target.value))
           <option value="Genderless">Genderless</option>
           <option value="unknown">unknown</option>
         </select>
+        
+        <select name="order" onChange={handleOrder}>
+          <option value="A">Ascendente</option>
+          <option value="D">Descendente</option>
+        </select>
+        
       
       </div>
-      <div>
+      <div className={styles.container2}>
         {myFavorites.map((myFavorite, index) => (
           <Card
             key={index}

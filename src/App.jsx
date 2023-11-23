@@ -43,8 +43,8 @@ function App() {
   }
 
   useEffect(() => {
-    !access && navigate('/home');
-    // !access && navigate('/');
+    // !access && navigate('/home');
+    !access && navigate('/');
  }, [access]);
 
   function onSearch(id) {
