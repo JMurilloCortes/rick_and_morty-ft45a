@@ -18,13 +18,13 @@ export default function validation(input) {
     if (!input.password.length) errors.password = "Ingresar pasword";
     else {
         if (!regexPassword.test(input.password)) {
-            errors.password = "El password debe tener incluir minimo 1 número";
+            errors.password = "Mínimo 1 número";
         }
         if (input.password.length < 6) {
-            errors.password = "El password debe tener minimo 6 caracteres";
+            errors.password = "Mínimo 6 caracteres";
         }
         if (input.password.length > 10) {
-            errors.password = "El password debe tener maximo 10 caracteres";
+            errors.password = "Máximo 10 caracteres";
         }
     }
 
