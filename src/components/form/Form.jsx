@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import validation from "../../utils/validation";
 import styles from "./form.module.css"
 
-
 export default function Form(props) {
 
     const [userData, setUserData] = useState({email:"", password:""})
