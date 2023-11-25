@@ -1,7 +1,7 @@
 import styles from "./about.module.css"
 import React from 'react'
 import imagen from '../../images/jerry.jpg';
-import icoLinkedin from '../../images/linkedin.png';
+// import icoLinkedin from '../../images/linkedin.png';
 
 function About(props) {
   return (

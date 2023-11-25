@@ -11,11 +11,10 @@
     color: white;
     background-color: #550094;
     &:hover {
-        background-color: #06378c;
+        background-color: #530566;
     }
-    margin: 15px;
-
-    /* border-bottom: #550094; */
+    margin: 10px;
+    border: solid 1px rgb(46, 1, 46);
 }
 
 .container input {
