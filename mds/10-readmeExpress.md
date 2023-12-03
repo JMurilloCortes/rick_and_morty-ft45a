@@ -16,14 +16,14 @@ XX minutos
 
 ## **📝 INTRODUCCIÓN**
 
-En esta homework crearemos un servidor con la librería de express. A su vez crearemos distintas rutas, y también simularemos una base de datos apra nuestros personajes favoritos.
+En esta homework crearemos un servidor con la librería de express. A su vez crearemos distintas rutas, y también simularemos una base de datos para nuestros personajes favoritos.
 
 Esta vez las rutas que crearemos son:
 
--  **`GET getCharById`**: esta ruta obtendrá personajes de la API mediante su **id**.
--  **`GET login`**: esta ruta es la que le dará o no acceso al usuario para usar la aplicación.
--  **`POST postFav`**: esta ruta guardará en nuestro servidor a nuestros personajes favoritos.
--  **`DELETE deleteFav`**: esta ruta eliminará a un personaje de nuestros favoritos.
+-   **`GET getCharById`**: esta ruta obtendrá personajes de la API mediante su **id**.
+-   **`GET login`**: esta ruta es la que le dará o no acceso al usuario para usar la aplicación.
+-   **`POST postFav`**: esta ruta guardará en nuestro servidor a nuestros personajes favoritos.
+-   **`DELETE deleteFav`**: esta ruta eliminará a un personaje de nuestros favoritos.
 
 <br />
 
@@ -38,12 +38,12 @@ Instala la librería **`express`**. Luego dirígete al archivo **`index.js`** y 
 1. Dentro del archivo **index.js** importa **`express`** e inicializa un nuevo servidor en el puerto 3001. Esta sería una forma de seguir buenas prácticas:
 
 ```js
-const express = require('express');
+const express = require("express");
 const server = express();
 const PORT = 3001;
 
 server.listen(PORT, () => {
-   console.log('Server raised in port: ' + PORT);
+    console.log("Server raised in port: " + PORT);
 });
 ```
 
@@ -121,10 +121,10 @@ Dentro de tu carpeta **controllers** crea un archivo con el nombre **`handleFavo
 
 Dirígete a la carpeta **routes** y crea un archivo con el nombre **`index.js`**. Dentro de este deberás importar todos tus controladores. También deberás importar las función **`Router`** de **express**. Crea una ruta para cada controlador con los siguientes paths:
 
--  GET **`getCharById`**: "/character/:id"
--  GET **`login`**: "/login"
--  POST **`postFav`**: "/fav"
--  DELETE **`deleteFav`**: "/fav/:id"
+-   GET **`getCharById`**: "/character/:id"
+-   GET **`login`**: "/login"
+-   POST **`postFav`**: "/fav"
+-   DELETE **`deleteFav`**: "/fav/:id"
 
 Finalmente exporta tu router.
 
@@ -140,21 +140,21 @@ Dirígete al archivo **`index.js`** en el que tienes tu servidor. Aquí deberás
 
 2. Copia este middleware en tu servidor:
 
-   ```js
-   server.use((req, res, next) => {
-      res.header('Access-Control-Allow-Origin', '*');
-      res.header('Access-Control-Allow-Credentials', 'true');
-      res.header(
-         'Access-Control-Allow-Headers',
-         'Origin, X-Requested-With, Content-Type, Accept'
-      );
-      res.header(
-         'Access-Control-Allow-Methods',
-         'GET, POST, OPTIONS, PUT, DELETE'
-      );
-      next();
-   });
-   ```
+    ```js
+    server.use((req, res, next) => {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Credentials", "true");
+        res.header(
+            "Access-Control-Allow-Headers",
+            "Origin, X-Requested-With, Content-Type, Accept"
+        );
+        res.header(
+            "Access-Control-Allow-Methods",
+            "GET, POST, OPTIONS, PUT, DELETE"
+        );
+        next();
+    });
+    ```
 
 3. Crea un middleware que ejecute a **`express.json()`**.
 
@@ -170,60 +170,60 @@ Llegó el momento para conectar nuestro nuevo servidor con nuestro Front-End. Pa
 
 1. Dirígete a tu archivo **`App.js`** y busca tu función **`login`**. Elimina por completo esta función, ya que la reemplazaremos con esta:
 
-   ```js
-   function login(userData) {
-      const { email, password } = userData;
-      const URL = 'http://localhost:3001/rickandmorty/login/';
-      axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
-         const { access } = data;
-         setAccess(data);
-         access && navigate('/home');
-      });
-   }
-   ```
+    ```js
+    function login(userData) {
+        const { email, password } = userData;
+        const URL = "http://localhost:3001/rickandmorty/login/";
+        axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
+            const { access } = data;
+            setAccess(data);
+            access && navigate("/home");
+        });
+    }
+    ```
 
 2. Ahora conectaremos nuestra ruta **postFav**. Para esto dirígete a tu archivo **`actions.js`** y reemplaza tu función addFav. Luego dirígete a tu **`reducer`** y reemplaza tu caso "ADD_FAV".
 
-   ```js
-   import axios from "axios";
+    ```js
+    import axios from "axios";
 
-   // ACTION | addFav
-   export const addFav = (character) => {
-      const endpoint = 'http://localhost:3001/rickandmorty/fav';
-      return (dispatch) => {
-         axios.post(endpoint, character).then(({ data }) => {
-            return dispatch({
-               type: 'ADD_FAV',
-               payload: data,
-            });
-         });
-      };
-   };
+    // ACTION | addFav
+    export const addFav = (character) => {
+       const endpoint = 'http://localhost:3001/rickandmorty/fav';
+       return (dispatch) => {
+          axios.post(endpoint, character).then(({ data }) => {
+             return dispatch({
+                type: 'ADD_FAV',
+                payload: data,
+             });
+          });
+       };
+    };
 
-   // REDUCER | ADD_FAV
-   case 'ADD_FAV':
-         return { ...state, myFavorites: payload, allCharacters: payload };
-   ```
+    // REDUCER | ADD_FAV
+    case 'ADD_FAV':
+          return { ...state, myFavorites: payload, allCharacters: payload };
+    ```
 
 > [**NOTA**]: debes importar **axios**.
 
 3. Por último nos queda conectar nuestra ruta **deleteFav**. Para esto dirígete a tu archivo **`actions.js`** y reemplaza tu función removeFav. Luego dirígete a tu **`reducer`** y reemplaza tu caso "REMOVE_FAV".
 
-   ```js
-   // ACTION | removeFav
-   export const removeFav = (id) => {
-      const endpoint = 'http://localhost:3001/rickandmorty/fav/' + id;
-      return (dispatch) => {
-         axios.delete(endpoint).then(({ data }) => {
-            return dispatch({
-               type: 'REMOVE_FAV',
-               payload: data,
-         });
-         });
-      };
-   };
+    ```js
+    // ACTION | removeFav
+    export const removeFav = (id) => {
+       const endpoint = 'http://localhost:3001/rickandmorty/fav/' + id;
+       return (dispatch) => {
+          axios.delete(endpoint).then(({ data }) => {
+             return dispatch({
+                type: 'REMOVE_FAV',
+                payload: data,
+          });
+          });
+       };
+    };
 
-   // REDUCER | REMOVE_FAV
-   case 'REMOVE_FAV':
-         return { ...state, myFavorites: payload };
-   ```
+    // REDUCER | REMOVE_FAV
+    case 'REMOVE_FAV':
+          return { ...state, myFavorites: payload };
+    ```
