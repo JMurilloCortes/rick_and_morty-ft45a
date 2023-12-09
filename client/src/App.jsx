@@ -12,13 +12,10 @@ import Form from "./components/form/Form.jsx";
 import { useDispatch } from "react-redux";
 import { removeFav } from "./redux/actions.js";
 
-
 const URL = "http://localhost:3001/rickandmorty/character";
 // const API_KEY = "henrystaff";
 const EMAIL = "jealmuco@gmail.com"
 const PASSWORD = "Juanes.6"
-
-
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -28,17 +25,6 @@ function App() {
 
   const location = useLocation();
  
-
-  // function login(userData){
-  //   if(userData.password === PASSWORD && userData.email === EMAIL){
-  //     setAccess(true);
-  //     navigate("/home")
-  //   }else{
-  //     alert("Credenciales incorrectas")
-  //   }
-  // }
-
-
   function login(userData) {
     const { email, password } = userData;
     const URL = "http://localhost:3001/rickandmorty/login/";
@@ -48,7 +34,6 @@ function App() {
         access && navigate("/home");
     });
 }
-
 
   function logout(){
     setAccess(false);
@@ -64,7 +49,6 @@ function App() {
     if (characterId.length) {
       return alert(`${characterId[0].name} ya existe!`); 
     }
-    // console.log(char.id);
     if (!id) {
       return alert("Debes ingresar un ID");
     }
@@ -103,8 +87,6 @@ function App() {
   }
 
 // ----------------------FIN DEL CODIGO EXTRA RANDOM--------------------------------------- 
-
-
 
   return (
     <div className="App">

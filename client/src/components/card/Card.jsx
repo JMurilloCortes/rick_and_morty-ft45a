@@ -34,7 +34,7 @@ useEffect(() => {
     <div>
         {
           isFav ? (
-              <button onClick={handleFavorite}>❤️</button>
+              <button onClick={handleFavorite}>💚</button>
           ) : (
               <button onClick={handleFavorite}>🤍</button>
           )

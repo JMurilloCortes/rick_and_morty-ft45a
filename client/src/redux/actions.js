@@ -18,7 +18,7 @@ export const removeFav = (id) => {
     return (dispatch) => {
         axios.delete(endpoint).then(({ data }) => {
             return dispatch({
-                type: "REMOVE_FAV",
+                type: REMOVE_FAV,
                 payload: data,
             });
         });
@@ -38,5 +38,3 @@ export function orderCards(order) {
         payload: order,
     };
 }
-
-// HOLA MUNDO
