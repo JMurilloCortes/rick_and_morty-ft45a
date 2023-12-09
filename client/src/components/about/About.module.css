@@ -1,0 +1,45 @@
+.container {
+    background-color: rgb(6, 179, 138);
+    color: #550094;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 5px rgb(65, 17, 80);
+    &:hover {
+        box-shadow: 8px 8px 8px green;
+    }
+    /* width: 250px;
+    min-width: 250px; */
+    /* height: 400px;
+    min-height: 400px; */
+}
+
+.container img {
+    margin-top: 20px;
+    border-radius: 50%;
+    width: 160px;
+    box-shadow: 5px 5px 5px rgb(65, 17, 80);
+    &:hover {
+        box-shadow: 8px 8px 8px green;
+    }
+}
+
+.container button {
+    background-color: #550094;
+    &:hover {
+        background-color: #530566;
+    }
+    margin-left: 30px;
+    margin-right: 30px;
+    border: solid 1px rgb(46, 1, 46);
+}
+
+.container h2 {
+    margin: 10px;
+    padding: 10px;
+    color: rgb(3, 51, 3);
+}
+
+.container h2 img {
+    width: 25px;
+}
