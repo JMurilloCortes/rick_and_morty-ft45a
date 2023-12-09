@@ -38,7 +38,9 @@ dispatch(filterCards(event.target.value))
       
       </div>
       <div className={styles.container2}>
-        {myFavorites.map((myFavorite, index) => (
+        {
+        !myFavorites.length ? <h2> No hay favoritos...</h2> :
+        myFavorites.map((myFavorite, index) => (
           <Card
             key={index}
             id={myFavorite.id}

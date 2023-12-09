@@ -13,6 +13,7 @@
 }
 
 .container2 {
+    color: white;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

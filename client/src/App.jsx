@@ -25,14 +25,20 @@ function App() {
 
   const location = useLocation();
  
-  function login(userData) {
-    const { email, password } = userData;
-    const URL = "http://localhost:3001/rickandmorty/login/";
-    axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
-        const { access } = data;
-        setAccess(data);
-        access && navigate("/home");
-    });
+  async function login(userData) {
+    try {
+      const { email, password } = userData;
+      const URL = "http://localhost:3001/rickandmorty/login/";
+      const {data} = await axios(URL + `?email=${email}&password=${password}`)
+      if(data.access){
+        setAccess(data.access);
+        navigate("/home");
+      }else{
+        alert("Credenciales incorrectas!")
+      }
+    } catch (error) {
+      alert(error.message)
+    }
 }
 
   function logout(){
@@ -44,21 +50,27 @@ function App() {
     // !access && navigate('/');
  }, [access]);
 
-  function onSearch(id) {
-    const characterId = characters.filter((char) => char.id === Number(id));
+  async function onSearch(id) {
+    try {
+      const characterId = characters.filter((char) => char.id === Number(id));
     if (characterId.length) {
       return alert(`${characterId[0].name} ya existe!`); 
     }
     if (!id) {
       return alert("Debes ingresar un ID");
     }
-    axios(`${URL}/${id}`).then(({ data }) => {
-      if (data.name) {
-        setCharacters((oldChars) => [...oldChars, data]);
-      } else {
-        window.alert("¡No hay personajes con este ID!");
-      }
-    });
+
+    const {data} = await axios(`${URL}/${id}`)
+    if (data.name) {
+      setCharacters([...characters, data]);
+      navigate("/home")
+    } else {
+      alert("¡El id debe ser entre 1 y 826!");
+    }
+
+    } catch (error) {
+      alert("¡El id debe ser entre 1 y 826!")
+    }
   }
 
 
@@ -69,21 +81,27 @@ function App() {
 
 // ----------------------CODIGO EXTRA RANDON--------------------------------------- 
 
-  function onRandom(id) {
-    
-    const characterRandom = characters.filter((char) => char.id === id);
-    
+  async function onRandom(id) {
+    try {
+      const characterRandom = characters.filter((char) => char.id === id);
     if (characterRandom.length) {
-      return alert(`${characterRandom[0].name} ya existe!`);
+      return alert(`${characterRandom[0].name} ya existe!`); 
     }
-    axios(`${URL}/${id}`).then(({ data }) => {
-      if (data.name) {
-        setCharacters((oldChars) => [...oldChars, data]);
-      } else {
-        window.alert("¡No hay personajes con este ID!");
-      }
+    if (!id) {
+      return alert("Debes ingresar un ID");
     }
-    );
+
+    const {data} = await axios(`${URL}/${id}`)
+    if (data.name) {
+      setCharacters([...characters, data]);
+      navigate("/home")
+    } else {
+      alert("¡El id debe ser entre 1 y 826!");
+    }
+
+    } catch (error) {
+      alert(error.message)
+    }
   }
 
 // ----------------------FIN DEL CODIGO EXTRA RANDOM--------------------------------------- 
