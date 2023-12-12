@@ -46,8 +46,8 @@ function App() {
   }
 
   useEffect(() => {
-    !access && navigate('/home');
-    // !access && navigate('/');
+    // !access && navigate('/home');
+    !access && navigate('/');
  }, [access]);
 
   async function onSearch(id) {
