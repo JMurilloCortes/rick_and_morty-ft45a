@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import validation from "../../utils/validation";
 import styles from "./form.module.css"
+import imagen from "../../images/login.png"
 
 
 export default function Form(props) {
@@ -29,10 +30,9 @@ export default function Form(props) {
 
     return(
         <div className={styles.container}>
-                <div className={styles.subcaja}>   
-                    <div className={styles.caja}>
-                    </div>
-                        <div> 
+                <div className={styles.caja}>   
+                    
+                        <img src={imagen} alt="" />
                             <form onSubmit={handleSubmit}>
                                 <br />
 
@@ -49,10 +49,11 @@ export default function Form(props) {
                                 </div>
 
                                 <p style={{color:"coral"}}>{errors.password ? errors.password : null}</p>
-
+                                <div className={styles.centBtn}>
                                 <button type="submit" disabled={errors.email || errors.password}>Submit</button>
+                                </div>
                             </form>
-                        </div>
+                       
                 </div>
             
         </div> 

@@ -1,46 +1,36 @@
 .container {
-    width: 1200px;
-    height: 93vh;
-    color: white;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
 .caja {
-    height: 260px;
-    width: 260px;
-    background-image: url("../../images/login.png");
-    background-size: contain;
-    /* padding: 50px 50px 60px 50px; */
-    border-radius: 50%;
-    /* box-shadow: 5px 5px 5px rgb(65, 17, 80); */
-}
-.subcaja {
-    /* height: 260px; */
-    /* width: 260px; */
-    /* background-color: grey;
-    opacity: 0.8;
-    background-size: contain; */
-    /* border: solid 1px; */
-    background: rgba(77, 77, 77, 0.7);
-    padding: 50px 50px 40px 50px;
-    border-radius: 16px;
-    box-shadow: 1px 1px 3px 6px rgba(77, 77, 77, 0.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #02b1c8;
+    padding: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    margin-top: 260px;
+    width: 270px;
 }
 
-.container button {
-    color: white;
-    background-color: #550094;
-    &:hover {
-        background-color: #530566;
-    }
-    margin: 10px;
-    border: solid 1px rgb(46, 1, 46);
+.container img {
+    width: 250px;
 }
 
 .labelsInputs {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+.centBtn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

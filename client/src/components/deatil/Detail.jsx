@@ -28,16 +28,24 @@ useEffect(() => {
 
 
   return (
-    <div className={styles.container}>
+   <div className={styles.container}>
+    <div className={styles.container2}>
+      <div>
         <h1>Detail</h1>
+      </div>
+      <div>
         <img src={character?.image} alt={character?.name} />
+      </div>  
+      <div className={styles.center}>
         <h2>Name: {character?.name}</h2>
         <h3>Id: {character?.id}</h3>
         <h3>Status: {character?.status}</h3>
         <h3>Specie: {character?.species}</h3>
         <h3>Gender: {character?.gender}</h3>
         <h3>Origin: {character.origin?.name}</h3>
+      </div>
     </div>
+   </div>
   )
 }
 

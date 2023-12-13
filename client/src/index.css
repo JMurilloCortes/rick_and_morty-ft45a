@@ -1,6 +1,6 @@
 :root {
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-    line-height: 1.5;
+    /* line-height: 1.5; */
     font-weight: 400;
 
     color-scheme: light dark;
@@ -27,6 +27,7 @@ body {
     margin: 0 auto;
     display: flex;
     /* place-items: center; */
+    width: 100%;
     min-width: 320px;
     min-height: 100vh;
     background-image: url("./images/fondo-app.jpg");
@@ -36,29 +37,42 @@ body {
 }
 
 h1 {
-    font-size: 3.2em;
-    line-height: 1.1;
+    font-size: 2em;
+    line-height: 1em;
+}
+
+h2 {
+    line-height: 1em;
+    font-size: 1em;
+    color: #003401;
+}
+
+h3 {
+    line-height: 0.9px;
+    font-size: 0.9em;
+    color: #220f75;
 }
 
 button {
     border-radius: 5px;
     border: 1px solid transparent;
-    padding: 0.6em 1.2em;
+    /* padding: 0.6em 1.2em; */
     font-size: 1em;
     font-weight: 500;
-    font-family: inherit;
+    /* font-family: inherit; */
     background-color: #1a1a1a;
     cursor: pointer;
     transition: border-color 0.25s;
 }
 
 button:hover {
-    border-color: #646cff;
+    background-color: rgb(207, 159, 247);
+    transition: 250ms;
 }
 
 button:focus,
 button:focus-visible {
-    outline: 4px auto -webkit-focus-ring-color;
+    outline: 4px auto #750da5;
 }
 
 @media (prefers-color-scheme: light) {

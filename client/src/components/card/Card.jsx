@@ -27,29 +27,42 @@ useEffect(() => {
   });
 }, [myFavorites]);
 
+let extract = props.name.split(" ")
+let extract2 = (`${extract[0]} ${extract[1]}`);
 
   return (
     <div className={styles.container}>
 
-    <div>
-        {
-          isFav ? (
-              <button onClick={handleFavorite}>💚</button>
-          ) : (
-              <button onClick={handleFavorite}>🤍</button>
-          )
-        }
+      <div className={styles.separBtn}>
+          {
+            isFav ? (
+                <button onClick={handleFavorite}>💜</button>
+            ) : (
+                <button onClick={handleFavorite}>🤍</button>
+            )
+          }
 
-        <button onClick={() => props.onClose(props.id)}>❌</button>
-    </div>
+          <button onClick={() => props.onClose(props.id)}>❌</button>
+      </div>
+
+          <div>
+            <Link to={`/detail/${props.id}`} >
+              <img src={props.image} alt={props.name} />
+            </Link>
+          </div>
+          <div>
+            
+            <h2>{extract2}</h2>
+          </div>
+          <div>
+            <h3>Id: {props.id}</h3>
+          </div>
+          <div>  
+            <h3>Gender: {props.gender}</h3>            
+          </div>
 
 
-      <Link to={`/detail/${props.id}`} >
-        <img src={props.image} alt={props.name} />
-      </Link>
-      <h2>{props.name}</h2>
-      <h3>Id: {props.id}</h3>
-      <h3>Gender: {props.gender}</h3>
+
     </div>
   );
 }

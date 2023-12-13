@@ -1,9 +1,19 @@
+.container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 1270px;
+    background-color: #550195;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-bottom: 10px;
+}
+.container img {
+    width: 250px;
+    padding: 10px;
+}
+
 .container button {
-    color: white;
-    background-color: #550094;
-    &:hover {
-        background-color: #530566;
-    }
-    margin: 10px;
-    border: solid 1px rgb(46, 1, 46);
+    margin: 7px;
+    height: 2rem;
 }

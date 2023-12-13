@@ -32,7 +32,7 @@ export default function SearchBar({ onSearch, onRandom }) {
   return (
     <div className={styles.container}>
       <div> 
-        <label> Id a agregar: </label>
+        <label> Id: </label>
         <input value={id} onChange={handleChange} type="text" />
       
         <button onClick={handleClick}>Agregar</button>
