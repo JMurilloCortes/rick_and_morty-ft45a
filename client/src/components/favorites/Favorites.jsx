@@ -48,7 +48,7 @@ dispatch(filterCards(event.target.value))
             status={myFavorite.status}
             species={myFavorite.species}
             gender={myFavorite.gender}
-            origin={myFavorite.origin}
+            // origin={myFavorite.origin}
             image={myFavorite.image}
             onClose={onClose}
           />

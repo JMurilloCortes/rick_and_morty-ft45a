@@ -1,21 +1,19 @@
 let myFavorites = [];
 
 const postFav = (req, res) => {
-    myFavorites.push(req.body);
-    return res.status(200).json(myFavorites);
+  //* req.body = { id:1, name:"Rick", ... }
+  myFavorites.push(req.body);
+  return res.json(myFavorites);
 };
 
 const deleteFav = (req, res) => {
-    const { id } = req.params;
-    const deleteCharacter = myFavorites.filter(
-        (character) => character.id !== Number(id)
-    );
-
-    myFavorites = deleteCharacter;
-    return res.status(200).json(myFavorites);
+  const { id } = req.params;
+  //* myFavorites =[ {1}, {2}, {3} ]
+  //* id = "2"
+  myFavorites = myFavorites.filter(
+    char => char.id !== Number(id)
+  );
+  return res.json(myFavorites);
 };
 
-module.exports = {
-    postFav,
-    deleteFav,
-};
+module.exports = { postFav, deleteFav };

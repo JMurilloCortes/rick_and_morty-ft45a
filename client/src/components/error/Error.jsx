@@ -1,10 +1,6 @@
 import React from 'react'
 import miImagen from "./404.jpg"
 
-
-
-
-
 function Error(props) {
     
   return (
